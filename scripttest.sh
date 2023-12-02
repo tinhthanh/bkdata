@@ -1,8 +1,8 @@
 #!/bin/bash
 
-target_dir="/path/to/target"
+target_dir="/www/server/panel/bkdata/dockercompose"
 
-find "$(dirname "$(find /path/to/source -name "docker-compose*" -type f -print -quit)")" -type f -name "docker-compose*" -exec bash -c '
+find "$(dirname "$(find / -name "docker-compose*" -type f -print -quit)")" -type f -name "docker-compose*" -exec bash -c '
     for file; do
         # Get the relative path of the file
         rel_path="${file#${1}/}"
@@ -14,4 +14,4 @@ find "$(dirname "$(find /path/to/source -name "docker-compose*" -type f -print -
         # Copy the file to the target directory
         cp "${file}" "${target_path}"
     done
-' bash {} "$(dirname "$(find /path/to/source -name "docker-compose*" -type f -print -quit)")" "${target_dir}" \;
+' bash {} "$(dirname "$(find / -name "docker-compose*" -type f -print -quit)")" "${target_dir}" \;
